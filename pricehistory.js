@@ -39,9 +39,9 @@ app.get("/purl", async (req, res) => {
       );
       trackmypriceProductPrice = await trackmypriceProductPrice.json();
       console.log(trackmypriceProductPrice);
-      const productInfo = trackmypriceApiRes
-      const productPriceInfo = trackmypriceProductPrice
-      return res.json({ productInfo, productPriceInfo });
+      const producutInfo = trackmypriceApiRes
+      const producutPriceInfo = trackmypriceProductPrice
+      return res.json({ producutInfo, producutPriceInfo });
       // return res.json({ trackmypriceApiRes, trackmypriceProductPrice });
     } else {
       return res.json({ err: "Product Url Not Found." });
@@ -55,5 +55,6 @@ app.get("/purl", async (req, res) => {
 app.listen(PORT, () =>
   console.log(`server started : http://localhost:${PORT}`)
 );
+
 
 
