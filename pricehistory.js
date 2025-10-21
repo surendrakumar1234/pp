@@ -33,20 +33,12 @@ app.get("/purl", async (req, res) => {
         `https://www.trackmyprice.in/api/getDetails?url=${req.query.url}`
       );
       trackmypriceApiRes = await trackmypriceApiRes.json();
-      await fs.promises.writeFile(
-        `./pHistoryFiles/${trackmypriceApiRes.productId}.json`,
-        JSON.stringify(trackmypriceApiRes)
-      );
 
       let trackmypriceProductPrice = await fetch(
         `https://www.trackmyprice.in/api/priceHistory/${trackmypriceApiRes.productId}`
       );
       trackmypriceProductPrice = await trackmypriceProductPrice.json();
       console.log(trackmypriceProductPrice);
-      await fs.promises.writeFile(
-        `./pHistoryFiles/Price-${trackmypriceApiRes.productId}.json`,
-        JSON.stringify(trackmypriceProductPrice)
-      );
       const producutInfo = trackmypriceApiRes
       const producutPriceInfo = trackmypriceProductPrice
       return res.json({ producutInfo, producutPriceInfo });
@@ -63,3 +55,4 @@ app.get("/purl", async (req, res) => {
 app.listen(PORT, () =>
   console.log(`server started : http://localhost:${PORT}`)
 );
+
